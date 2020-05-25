@@ -39,7 +39,8 @@ return [
   'App' => [
     'namespace' => 'App',
     'encoding' => env('APP_ENCODING', 'UTF-8'),
-    'defaultLocale' => env('APP_DEFAULT_LOCALE', 'en_US'),
+    'defaultLocale' => 'ja_JP',
+    'defaultTimezone' => 'Asia/Tokyo',
     'base' => false,
     'dir' => 'src',
     'webroot' => 'webroot',
@@ -229,11 +230,11 @@ return [
        * the following line and set the port accordingly
        */
       //'port' => 'non_standard_port_number',
-      'username' => 'docker_db_', // my_app
-      'password' => '', // secret
-      'database' => 'mydata', // my_app
+      'username' => 'docker_db_user', // my_app
+      'password' => 'docker_db_user_pass', // secret
+      'database' => 'docker_db', // my_app
       'encoding' => 'utf8',
-      'timezone' => 'UTC',
+      'timezone' => 'Asia/Tokyo',
       'flags' => [],
       'cacheMetadata' => true,
       'log' => false,

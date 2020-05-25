@@ -2,13 +2,17 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\MoviesController;
-use Cake\TestSuite\IntegrationTestCase;
+use Cake\TestSuite\IntegrationTestTrait;
+use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\MoviesController Test Case
+ *
+ * @uses \App\Controller\MoviesController
  */
-class MoviesControllerTest extends IntegrationTestCase
+class MoviesControllerTest extends TestCase
 {
+    use IntegrationTestTrait;
 
     /**
      * Fixtures
@@ -16,7 +20,7 @@ class MoviesControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.movies'
+        'app.Movies',
     ];
 
     /**

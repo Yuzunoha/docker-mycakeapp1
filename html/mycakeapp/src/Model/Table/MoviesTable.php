@@ -12,7 +12,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Movie get($primaryKey, $options = [])
  * @method \App\Model\Entity\Movie newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Movie[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Movie|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Movie|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Movie saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\Movie patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Movie[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Movie findOrCreate($search, callable $callback = null, $options = [])
@@ -21,51 +22,51 @@ use Cake\Validation\Validator;
  */
 class MoviesTable extends Table
 {
+    /**
+     * Initialize method
+     *
+     * @param array $config The configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
 
-	/**
-	 * Initialize method
-	 *
-	 * @param array $config The configuration for the Table.
-	 * @return void
-	 */
-	public function initialize(array $config)
-	{
-		parent::initialize($config);
+        $this->setTable('movies');
+        $this->setDisplayField('title');
+        $this->setPrimaryKey('id');
 
-		$this->setTable('movies');
-		$this->setDisplayField('title');
-		$this->setPrimaryKey('id');
+        $this->addBehavior('Timestamp');
+    }
 
-		$this->addBehavior('Timestamp');
-	}
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->integer('id')
+            ->allowEmptyString('id', null, 'create');
 
-	/**
-	 * Default validation rules.
-	 *
-	 * @param \Cake\Validation\Validator $validator Validator instance.
-	 * @return \Cake\Validation\Validator
-	 */
-	public function validationDefault(Validator $validator)
-	{
-		$validator
-			->integer('id')
-			->allowEmpty('id', 'create');
+        $validator
+            ->scalar('title')
+            ->maxLength('title', 255)
+            ->requirePresence('title', 'create')
+            ->notEmptyString('title');
 
-		$validator
-			->scalar('title')
-			->requirePresence('title', 'create')
-			->notEmpty('title');
+        $validator
+            ->scalar('content')
+            ->requirePresence('content', 'create')
+            ->notEmptyString('content');
 
-		$validator
-			->scalar('content')
-			->requirePresence('content', 'create')
-			->notEmpty('content');
+        $validator
+            ->integer('stars')
+            ->requirePresence('stars', 'create')
+            ->notEmptyString('stars');
 
-		$validator
-			->integer('stars')
-			->requirePresence('stars', 'create')
-			->notEmpty('stars');
-
-		return $validator;
-	}
+        return $validator;
+    }
 }

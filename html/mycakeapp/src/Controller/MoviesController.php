@@ -8,39 +8,36 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\MoviesTable $Movies
  *
- * @method \App\Model\Entity\Movie[] paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\Movie[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class MoviesController extends AppController
 {
-
     /**
      * Index method
      *
-     * @return \Cake\Http\Response|void
+     * @return \Cake\Http\Response|null
      */
     public function index()
     {
         $movies = $this->paginate($this->Movies);
 
         $this->set(compact('movies'));
-        $this->set('_serialize', ['movies']);
     }
 
     /**
      * View method
      *
      * @param string|null $id Movie id.
-     * @return \Cake\Http\Response|void
+     * @return \Cake\Http\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
         $movie = $this->Movies->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
 
         $this->set('movie', $movie);
-        $this->set('_serialize', ['movie']);
     }
 
     /**
@@ -61,7 +58,6 @@ class MoviesController extends AppController
             $this->Flash->error(__('The movie could not be saved. Please, try again.'));
         }
         $this->set(compact('movie'));
-        $this->set('_serialize', ['movie']);
     }
 
     /**
@@ -69,12 +65,12 @@ class MoviesController extends AppController
      *
      * @param string|null $id Movie id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit($id = null)
     {
         $movie = $this->Movies->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $movie = $this->Movies->patchEntity($movie, $this->request->getData());
@@ -86,7 +82,6 @@ class MoviesController extends AppController
             $this->Flash->error(__('The movie could not be saved. Please, try again.'));
         }
         $this->set(compact('movie'));
-        $this->set('_serialize', ['movie']);
     }
 
     /**

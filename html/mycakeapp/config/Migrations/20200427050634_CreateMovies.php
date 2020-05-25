@@ -1,29 +1,28 @@
 <?php
 use Migrations\AbstractMigration;
 
-class CreateBidinfo extends AbstractMigration
+class CreateMovies extends AbstractMigration
 {
     /**
      * Change Method.
      *
      * More information on this method is available here:
-     * http://docs.phinx.org/en/latest/migrations.html#the-change-method
+     * https://book.cakephp.org/phinx/0/en/migrations.html#the-change-method
      * @return void
      */
     public function change()
     {
-        $table = $this->table('bidinfo');
-        $table->addColumn('biditem_id', 'integer', [
+        $table = $this->table('movies');
+        $table->addColumn('title', 'string', [
             'default' => null,
-            'limit' => 11,
+            'limit' => 255,
             'null' => false,
         ]);
-        $table->addColumn('user_id', 'integer', [
+        $table->addColumn('content', 'text', [
             'default' => null,
-            'limit' => 11,
             'null' => false,
         ]);
-        $table->addColumn('price', 'integer', [
+        $table->addColumn('stars', 'integer', [
             'default' => null,
             'limit' => 11,
             'null' => false,

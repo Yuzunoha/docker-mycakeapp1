@@ -10,7 +10,6 @@ use Cake\TestSuite\TestCase;
  */
 class BidinfoTableTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -24,11 +23,10 @@ class BidinfoTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.bidinfo',
-        'app.biditems',
-        'app.users',
-        'app.bidmessages',
-        'app.bidrequests'
+        'app.Bidinfo',
+        'app.Biditems',
+        'app.Users',
+        'app.Bidmessages',
     ];
 
     /**
@@ -39,8 +37,8 @@ class BidinfoTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Bidinfo') ? [] : ['className' => BidinfoTable::class];
-        $this->Bidinfo = TableRegistry::get('Bidinfo', $config);
+        $config = TableRegistry::getTableLocator()->exists('Bidinfo') ? [] : ['className' => BidinfoTable::class];
+        $this->Bidinfo = TableRegistry::getTableLocator()->get('Bidinfo', $config);
     }
 
     /**

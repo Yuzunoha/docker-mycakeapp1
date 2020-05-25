@@ -10,7 +10,6 @@ use Cake\TestSuite\TestCase;
  */
 class MoviesTableTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -24,7 +23,7 @@ class MoviesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.movies'
+        'app.Movies',
     ];
 
     /**
@@ -35,8 +34,8 @@ class MoviesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Movies') ? [] : ['className' => MoviesTable::class];
-        $this->Movies = TableRegistry::get('Movies', $config);
+        $config = TableRegistry::getTableLocator()->exists('Movies') ? [] : ['className' => MoviesTable::class];
+        $this->Movies = TableRegistry::getTableLocator()->get('Movies', $config);
     }
 
     /**

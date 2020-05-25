@@ -10,7 +10,6 @@ use Cake\TestSuite\TestCase;
  */
 class UsersTableTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -24,11 +23,11 @@ class UsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.users',
-        'app.bidinfo',
-        'app.biditems',
-        'app.bidmessages',
-        'app.bidrequests'
+        'app.Users',
+        'app.Bidinfo',
+        'app.Biditems',
+        'app.Bidmessages',
+        'app.Bidrequests',
     ];
 
     /**
@@ -39,8 +38,8 @@ class UsersTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Users') ? [] : ['className' => UsersTable::class];
-        $this->Users = TableRegistry::get('Users', $config);
+        $config = TableRegistry::getTableLocator()->exists('Users') ? [] : ['className' => UsersTable::class];
+        $this->Users = TableRegistry::getTableLocator()->get('Users', $config);
     }
 
     /**

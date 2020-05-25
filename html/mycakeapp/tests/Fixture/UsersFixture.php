@@ -5,11 +5,9 @@ use Cake\TestSuite\Fixture\TestFixture;
 
 /**
  * UsersFixture
- *
  */
 class UsersFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -30,18 +28,21 @@ class UsersFixture extends TestFixture
         ],
     ];
     // @codingStandardsIgnoreEnd
-
     /**
-     * Records
+     * Init method
      *
-     * @var array
+     * @return void
      */
-    public $records = [
-        [
-            'id' => 1,
-            'username' => 'Lorem ipsum dolor sit amet',
-            'password' => 'Lorem ipsum dolor sit amet',
-            'role' => 'Lorem ipsum dolor '
-        ],
-    ];
+    public function init()
+    {
+        $this->records = [
+            [
+                'id' => 1,
+                'username' => 'Lorem ipsum dolor sit amet',
+                'password' => 'Lorem ipsum dolor sit amet',
+                'role' => 'Lorem ipsum dolor ',
+            ],
+        ];
+        parent::init();
+    }
 }

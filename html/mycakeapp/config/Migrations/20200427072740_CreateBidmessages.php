@@ -1,19 +1,19 @@
 <?php
 use Migrations\AbstractMigration;
 
-class CreateBidrequests extends AbstractMigration
+class CreateBidmessages extends AbstractMigration
 {
     /**
      * Change Method.
      *
      * More information on this method is available here:
-     * http://docs.phinx.org/en/latest/migrations.html#the-change-method
+     * https://book.cakephp.org/phinx/0/en/migrations.html#the-change-method
      * @return void
      */
     public function change()
     {
-        $table = $this->table('bidrequests');
-        $table->addColumn('biditem_id', 'integer', [
+        $table = $this->table('bidmessages');
+        $table->addColumn('bidinfo_id', 'integer', [
             'default' => null,
             'limit' => 11,
             'null' => false,
@@ -23,9 +23,8 @@ class CreateBidrequests extends AbstractMigration
             'limit' => 11,
             'null' => false,
         ]);
-        $table->addColumn('price', 'integer', [
+        $table->addColumn('message', 'text', [
             'default' => null,
-            'limit' => 11,
             'null' => false,
         ]);
         $table->addColumn('created', 'datetime', [

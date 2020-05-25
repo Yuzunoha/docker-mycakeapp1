@@ -5,11 +5,9 @@ use Cake\TestSuite\Fixture\TestFixture;
 
 /**
  * BidrequestsFixture
- *
  */
 class BidrequestsFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -31,19 +29,22 @@ class BidrequestsFixture extends TestFixture
         ],
     ];
     // @codingStandardsIgnoreEnd
-
     /**
-     * Records
+     * Init method
      *
-     * @var array
+     * @return void
      */
-    public $records = [
-        [
-            'id' => 1,
-            'biditem_id' => 1,
-            'user_id' => 1,
-            'price' => 1,
-            'created' => '2018-01-09 02:32:13'
-        ],
-    ];
+    public function init()
+    {
+        $this->records = [
+            [
+                'id' => 1,
+                'biditem_id' => 1,
+                'user_id' => 1,
+                'price' => 1,
+                'created' => '2020-04-27 07:29:52',
+            ],
+        ];
+        parent::init();
+    }
 }

@@ -2,13 +2,17 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\BidmessagesController;
-use Cake\TestSuite\IntegrationTestCase;
+use Cake\TestSuite\IntegrationTestTrait;
+use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\BidmessagesController Test Case
+ *
+ * @uses \App\Controller\BidmessagesController
  */
-class BidmessagesControllerTest extends IntegrationTestCase
+class BidmessagesControllerTest extends TestCase
 {
+    use IntegrationTestTrait;
 
     /**
      * Fixtures
@@ -16,13 +20,9 @@ class BidmessagesControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.bidmessages',
-        'app.bidinfos',
-        'app.users',
-        'app.bidinfo',
-        'app.biditems',
-        'app.bidrequests',
-        'app.sendtos'
+        'app.Bidmessages',
+        'app.Bidinfos',
+        'app.Users',
     ];
 
     /**

@@ -5,18 +5,15 @@ use Cake\TestSuite\Fixture\TestFixture;
 
 /**
  * BidinfoFixture
- *
  */
 class BidinfoFixture extends TestFixture
 {
-
     /**
      * Table name
      *
      * @var string
      */
     public $table = 'bidinfo';
-
     /**
      * Fields
      *
@@ -38,19 +35,22 @@ class BidinfoFixture extends TestFixture
         ],
     ];
     // @codingStandardsIgnoreEnd
-
     /**
-     * Records
+     * Init method
      *
-     * @var array
+     * @return void
      */
-    public $records = [
-        [
-            'id' => 1,
-            'biditem_id' => 1,
-            'user_id' => 1,
-            'price' => 1,
-            'created' => '2018-01-09 02:31:37'
-        ],
-    ];
+    public function init()
+    {
+        $this->records = [
+            [
+                'id' => 1,
+                'biditem_id' => 1,
+                'user_id' => 1,
+                'price' => 1,
+                'created' => '2020-04-27 07:29:42',
+            ],
+        ];
+        parent::init();
+    }
 }

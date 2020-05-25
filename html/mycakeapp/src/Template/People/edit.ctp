@@ -1,7 +1,9 @@
-<?=$this->Form->create($entity, 
-		['type'=>'post', 
-		'url'=>['controller'=>'People', 
-			'action'=>'update']]) ?>
+<?=$this->Form->create(
+    $entity,
+    ['type'=>'post',
+        'url'=>['controller'=>'People',
+            'action'=>'update']]
+) ?>
 <?=$this->Form->hidden('People.id') ?>
 <div>name</div>
 <div><?=$this->Form->text('People.name') ?></div>
